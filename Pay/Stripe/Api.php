@@ -101,7 +101,7 @@ class Api implements ApiInterface
                 header('Location: ' . $source['redirect']['url']);
                 break;
             case 'wechat':
-                header('Location: ' . $source['wechat']['qr_code_url']);
+                header('Location: /qrcode/pay/' . $out_trade_no . '/wechat?url=' . urlencode($source['wechat']['qr_code_url']));
                 break;
             default:
                 throw new \Exception('支付方式错误');
