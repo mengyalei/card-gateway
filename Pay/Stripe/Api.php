@@ -352,7 +352,11 @@ class Api implements ApiInterface
             Log::error(__FILE__ . ':L' . __LINE__ . 'get currency rate failed: ' . $response);
             throw new \Exception('获取汇率失败#2');
         }
-
+        
+        if($currency === 'jpy'){
+            $cny /= 100; // 日元没有分
+        }
+        
         return (int)ceil($cny * $rate); // 向上取整, 1428.12 => 1429
     }
 
